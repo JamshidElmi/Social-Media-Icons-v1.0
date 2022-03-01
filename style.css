@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+:root {
+  --cb: cubic-bezier(.68,-0.55,.26,1.55);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  place-items: center;
+  background-color: #e1e1e1;
+}
+
+.wrapper {
+  display: inline-flex;
+}
+
+.wrapper .icon {
+  position: relative;
+  display: flex;
+  background-color: white;
+  color: var(--color);
+  border-radius: 50%;
+  padding: 23px 15px 15px 15px;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  font-size: 25px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px #00000015;
+  cursor: pointer;
+  transition: color 0.4s ease,
+  background-color 0.4s ease;
+}
+
+.wrapper .tooltip {
+  position: absolute;
+  top: 0;
+  font-size: 14px;
+  color: white;
+  padding: 5px 8px;
+  background-color: #000;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px #00000015;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s var(--cb);
+}
+
+.wrapper .tooltip::before {
+  content: "";
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  background-color: #000;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s var(--cb);
+}
+
+/* Hover */
+.wrapper .icon:hover .tooltip {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.wrapper .icon:hover,
+.wrapper .icon:hover .tooltip,
+.wrapper .icon:hover .tooltip::before {
+  background-color: var(--color);
+  color: white;
+}
